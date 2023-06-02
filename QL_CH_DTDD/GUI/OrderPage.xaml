@@ -1,0 +1,64 @@
+﻿<Page x:Class="QL_CH_DTDD.GUI.OrderPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:QL_CH_DTDD.GUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1200" Background="#ffffff"
+      Title="OrderPage">
+    <Grid>
+
+        <TextBlock Text="TẠO ĐƠN HÀNG" FontSize="20" Foreground="Black" Margin="0 15 30 30" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Height="50"/>
+        <TextBox Name="oderCustomerName" Margin="65,97,835,561" materialDesign:HintAssist.Hint="Tên khách hàng" Width="300"  FontSize="18" Background="Transparent"
+                IsEnabled="False"
+                 FontWeight="Bold" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        <TextBox Name="OderproductName" Margin="443,97,457,561" materialDesign:HintAssist.Hint="Tên sản phẩm" Width="300"  FontSize="18" Background="Transparent"
+                 PreviewMouseUp="OderproductName_PreviewMouseUp" Foreground="Red" 
+                 FontWeight="Bold" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+
+        <TextBox Name="oderAddress" Margin="65,356,457,302" materialDesign:HintAssist.Hint="Địa chỉ khách hàng"  FontSize="18" Background="Transparent"
+                IsEnabled="False"
+                 FontWeight="Bold" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+
+        <TextBox Name="ProductCost" Margin="813,356,87,302" materialDesign:HintAssist.Hint="Tổng tiền (đ)" Width="300"  FontSize="18" Background="Transparent"
+                 IsEnabled="False" Foreground="Red"
+                 FontWeight="Bold" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+
+        <TextBox Name="oderNumberProduct" Margin="808,226,242,432" materialDesign:HintAssist.Hint="Nhập số lượng" Width="150"  FontSize="18" Background="Transparent"
+                IsEnabled="False" 
+                 FontWeight="Bold" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        <TextBox Name="oldNumberProduct" Margin="963,226,87,432" materialDesign:HintAssist.Hint="Tồn kho" Width="150"  FontSize="18" Background="Transparent"
+                IsEnabled="False" Foreground="Red"
+                 FontWeight="Bold" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+
+        <TextBox Name="oderProductPrice" Margin="443,226,457,432" materialDesign:HintAssist.Hint="Giá bán (đ)" Width="300"  FontSize="18" Background="Transparent"
+                IsEnabled="False" Foreground="Red"
+                 FontWeight="Bold" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+
+        <TextBox Name="CustomerPhone" Margin="65,226,835,432" materialDesign:HintAssist.Hint="Số điện thoại" Width="300"  FontSize="18" Background="Transparent"
+                IsEnabled="False"
+                 FontWeight="Bold" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+
+
+
+        <DatePicker Width="300"  FontSize="18" FontWeight="Bold" materialDesign:HintAssist.Hint="Ngày bán"
+                   IsEnabled="False"
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Name="editProductDate" Margin="813,73,87,561" Height="86">
+        </DatePicker>
+
+        <TextBox Name="oderMoneyCustomer" Margin="65,493,835,165" materialDesign:HintAssist.Hint="Số tiền khách đưa (đ)" Width="300"  FontSize="18" Background="Transparent"
+                IsEnabled="False" Foreground="Red"
+                 FontWeight="Bold" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+
+        <TextBox Name="oderMoneychange" Margin="443,493,457,165" materialDesign:HintAssist.Hint="Số tiền trả lại (đ)" Width="300"  FontSize="18" Background="Transparent"
+                IsEnabled="False" Foreground="Red"
+                 FontWeight="Bold" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+
+        <Button x:Name="saveProduct" Content="Lưu đơn hàng" IsEnabled="False" Width="200" Height="50" FontFamily="18" FontWeight="Bold" Margin="860,493,140,177"/>
+        <Button x:Name="CancelProduct" Content="Tạo mới đơn" IsEnabled="False"  Width="200" Height="50" FontFamily="18" FontWeight="Bold" Margin="860,562,140,108"/>
+        <Button x:Name="listProduct" Content="Danh sách đơn hàng" Click="listProduct_Click"  Width="200" Height="50" FontFamily="18" FontWeight="Bold" Margin="860,634,140,36"/>
+
+    </Grid>
+</Page>

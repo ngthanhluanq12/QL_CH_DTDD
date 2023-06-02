@@ -1,0 +1,64 @@
+﻿<Page x:Class="QL_CH_DTDD.GUI.StatisticPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      xmlns:local="clr-namespace:QL_CH_DTDD.GUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1200" Background="White"  Loaded="StatisticPage_Loaded"
+      Title="StatisticPage">
+
+    <Grid>
+        <Canvas Width="1200" Height="60" VerticalAlignment="Top">
+            <!--Thống kê số sản phẩm của từng loại-->
+            <DatePicker  FontSize="14" FontWeight="Bold" materialDesign:HintAssist.Hint="Từ ngày" 
+                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Name="StarDate" RenderTransformOrigin="1.114,0.397" Canvas.Left="157" Canvas.Top="3" Width="120"  />
+            <DatePicker  FontSize="14" FontWeight="Bold" materialDesign:HintAssist.Hint="Đến ngày" 
+                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Name="endDate" RenderTransformOrigin="1.114,0.397" Canvas.Left="292" Canvas.Top="3" Width="120"  />
+            <Button x:Name="report" Content="Thống kê" Canvas.Top="13" Click="report_Click" Canvas.Left="52"></Button>
+            <TextBlock Text="THỐNG KÊ" FontSize="20" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Height="50" Canvas.Left="549" Canvas.Top="14"/>
+        </Canvas>
+        <Canvas Margin="0,60,0,10">
+
+
+            <!--LiveChart-->
+            <lvc:CartesianChart Name="ToTalproduct"  Height="294" Width="532" Canvas.Left="30" Canvas.Top="2">
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis  FontSize="14" FontWeight="SemiBold" Labels="{Binding Labels}" >
+                        <lvc:Axis.Separator>
+                            <lvc:Separator IsEnabled="False" Step="1"/>
+                        </lvc:Axis.Separator>
+                    </lvc:Axis>
+                </lvc:CartesianChart.AxisX>
+            </lvc:CartesianChart>
+
+            <lvc:CartesianChart Name="Totalprice" Height="296" Width="532" Canvas.Left="626">
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis  FontSize="14" FontWeight="SemiBold" Labels="{Binding Labels}" >
+                        <lvc:Axis.Separator>
+                            <lvc:Separator IsEnabled="False" Step="1"/>
+                        </lvc:Axis.Separator>
+                    </lvc:Axis>
+                    <lvc:Axis ></lvc:Axis>
+                </lvc:CartesianChart.AxisX>
+            </lvc:CartesianChart>
+
+            <lvc:CartesianChart Name="TotalProfit" Height="273" Width="532" Canvas.Left="344" Canvas.Top="339">
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis  FontSize="14" FontWeight="SemiBold" Labels="{Binding Labels}" >
+                        <lvc:Axis.Separator>
+                            <lvc:Separator IsEnabled="False" Step="1"/>
+                        </lvc:Axis.Separator>
+                    </lvc:Axis>
+                </lvc:CartesianChart.AxisX>
+            </lvc:CartesianChart>
+
+            <Label Content="Tổng sản phẩm bán được của từng loại" FontSize="18" FontWeight="SemiBold" Foreground="Red" Canvas.Left="139" Canvas.Top="307"/>
+            <Label Content="Doanh thu bán được của từng loại" FontSize="18" FontWeight="SemiBold" Foreground="Red" Canvas.Left="755" Canvas.Top="307"/>
+            <Label Content="Lợi nhuận bán được của từng loại" FontSize="18" FontWeight="SemiBold" Foreground="Red" Canvas.Left="472" Canvas.Top="608"/>
+        </Canvas>
+
+    </Grid>
+</Page>

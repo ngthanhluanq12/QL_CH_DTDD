@@ -1,0 +1,149 @@
+﻿<Page x:Class="QL_CH_DTDD.GUI.CategoryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:QL_CH_DTDD.GUI"
+      mc:Ignorable="d" 
+       d:DesignHeight="720" d:DesignWidth="1200" Loaded="CategoryPage_Loaded"
+      Title="CategoryPage">
+
+    <Page.Resources>
+        <local:DataConverter x:Key="IndexConverter"/>
+    </Page.Resources>
+    <Grid  Background="#ffffff">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="390"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <Canvas>
+                <Grid  x:Name="grdHome" HorizontalAlignment="Left" Height="65" Margin="0" Width="310" Canvas.Left="41" Canvas.Top="10">
+                    <materialDesign:PackIcon x:Name="icnHome" Kind="MicrosoftExcel" Width="32" Height="32" VerticalAlignment="Center" Cursor="Hand"
+                        Foreground="White" Panel.ZIndex="999" />
+                    <Button x:Name="btnImport"  Content="Import" HorizontalAlignment="Left" Height="40" Margin="0,12,0,13" Width="129" VerticalAlignment="Center"
+                        BorderBrush="ForestGreen" Background="ForestGreen" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" 
+                        FontWeight="SemiBold" Padding="50,0,0,0" Cursor="Hand" FocusVisualStyle="{x:Null}"
+                        Foreground="White" >
+
+                    </Button>
+                </Grid>
+                <TextBox Margin="0 0 0 0" x:Name="IdTextBox" Width="311" Height="62" FontSize="18" IsEnabled="False" materialDesign:HintAssist.Hint="Mã Loại"
+                         BorderThickness="2" 
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}" Canvas.Left="40" Canvas.Top="134" />
+                <TextBox Margin="0 0 0 0" x:Name="nameTextBox" Width="311" FontSize="18" materialDesign:HintAssist.Hint="Tên Loại Sản Phẩm"
+                         BorderThickness="2" 
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}" Canvas.Left="40" Canvas.Top="238"/>
+                <TextBox Margin="0 0 0 0" x:Name="desTextBox" Width="311" FontSize="18" materialDesign:HintAssist.Hint="Mô Tả"
+                         BorderThickness="2"  
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}" Canvas.Left="40" Canvas.Top="342"/>
+
+                <!--Thêm Xóa Sửa-->
+                <Button x:Name="addcategory" Content="Thêm" Click="addcategory_Click" Width="90" Height="40" Canvas.Left="45" Canvas.Top="472" />
+                <Button x:Name="deletecategory" Click="deletecategory_Click" Content="Xóa" Width="90" Height="40" Canvas.Left="252" Canvas.Top="472" />
+                <Button x:Name="updatecategory" Click="updatecategory_Click" Content="Sửa" Width="90" Height="40" Canvas.Left="148" Canvas.Top="472" />
+            </Canvas>
+
+        </StackPanel>
+        <StackPanel Grid.Column="1" Background="Azure" Margin="0,0,0,0">
+            <Label Content="DANH MỤC LOẠI SẢN PHẨM" FontSize="18" FontWeight="Bold" Margin="0 15 30 30" HorizontalAlignment="Center"/>
+            <ListView x:Name="categoryListView" SelectionChanged="categoryListView_SelectionChanged" HorizontalAlignment="Left" ItemsSource="{Binding allCategory}" FontFamily="Sitka Subheading" FontSize="13" Foreground="Black" Width="800">
+                <ListView.Resources>
+                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                        <Setter Property="HorizontalContentAlignment" Value="Left" />
+                    </Style>
+                </ListView.Resources>
+                <ListView.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="Gray" Offset="0"/>
+                    </LinearGradientBrush>
+                </ListView.Background>
+                <ListView.View>
+                    <GridView>
+                        <!--cột STT-->
+                        <GridViewColumn Width="100"
+                        DisplayMemberBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, 
+                        Converter={StaticResource IndexConverter}}">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <Border>
+                                        <Label Content="STT" FontSize="15" Foreground="Black" FontWeight="Bold"/>
+                                    </Border>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                        </GridViewColumn>
+                        <!--Cột Mã loại-->
+                        <GridViewColumn Width="130"
+                        DisplayMemberBinding="{Binding loaiSanPhamId}">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <Border>
+                                        <Border.Effect>
+                                            <DropShadowEffect
+                                            Color="White"
+                                            Direction="270"
+                                            ShadowDepth="1"
+                                            BlurRadius="5"/>
+                                        </Border.Effect>
+                                        <Label Content="Mã Loại"
+                                       Padding="1"
+                                       FontSize="15"
+                                       Foreground="Black"
+                                       FontWeight="Bold"/>
+                                    </Border>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                        </GridViewColumn>
+                        <!--Cột Tên loại-->
+                        <GridViewColumn Width="250"
+                        
+                        DisplayMemberBinding="{Binding tenLoai}">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <Border>
+                                        <Border.Effect>
+                                            <DropShadowEffect
+                                            Color="White"
+                                            Direction="270"
+                                            ShadowDepth="1"
+                                            BlurRadius="5"/>
+                                        </Border.Effect>
+                                        <Label Content="Tên Loại Sản Phẩm"
+                                       Padding="1"
+                                       FontSize="15"
+                                       Foreground="Black"
+                                       FontWeight="Bold"/>
+                                    </Border>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                        </GridViewColumn>
+                        <!--Cột mô tả-->
+                        <GridViewColumn   Width="300"                     
+                        DisplayMemberBinding="{Binding moTa}">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <Border>
+                                        <Border.Effect>
+                                            <DropShadowEffect
+                                            Color="White"
+                                            Direction="270"
+                                            ShadowDepth="1"
+                                            BlurRadius="5"/>
+                                        </Border.Effect>
+                                        <Label Content="Mô Tả"
+                                       Padding="1"
+                                       FontSize="15"
+                                       Foreground="Black"
+                                       FontWeight="Bold"/>
+                                    </Border>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+
+    </Grid>
+</Page>
